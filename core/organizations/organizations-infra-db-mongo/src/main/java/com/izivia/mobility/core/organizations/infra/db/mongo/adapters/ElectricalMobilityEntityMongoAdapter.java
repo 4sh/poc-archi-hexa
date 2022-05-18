@@ -32,7 +32,7 @@ public class ElectricalMobilityEntityMongoAdapter implements ElectricalMobilityR
   public Optional<ElectricalMobility> findUnique(String id) {
     ElectricalMobilityEntity entity = electricalMobilityEntityRepository
         .findById(id)
-        .orElseThrow(() -> new RuntimeException(" electricalMobility not found"));
+        .orElseThrow(() -> new RuntimeException(" electricalMobility not found : " + id));
     return ofNullable(INSTANCE
         .electricalMobilityEntityToElectricalMobility(entity));
   }
