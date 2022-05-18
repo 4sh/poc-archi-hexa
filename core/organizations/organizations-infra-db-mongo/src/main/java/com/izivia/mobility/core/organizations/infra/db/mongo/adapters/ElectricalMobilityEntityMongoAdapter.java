@@ -1,6 +1,7 @@
 package com.izivia.mobility.core.organizations.infra.db.mongo.adapters;
 
 import static com.izivia.mobility.core.organizations.infra.db.mongo.mappers.ElectricalMobilityMapper.INSTANCE;
+import static java.util.Optional.ofNullable;
 import static lombok.AccessLevel.PRIVATE;
 
 import com.izivia.mobility.core.organizations.domain.data.ElectricalMobility;
@@ -8,6 +9,7 @@ import com.izivia.mobility.core.organizations.domain.ports.spi.ElectricalMobilit
 import com.izivia.mobility.core.organizations.infra.db.mongo.entities.ElectricalMobilityEntity;
 import com.izivia.mobility.core.organizations.infra.db.mongo.repositories.ElectricalMobilityEntityRepository;
 import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import org.springframework.stereotype.Service;
@@ -27,18 +29,19 @@ public class ElectricalMobilityEntityMongoAdapter implements ElectricalMobilityR
   }
 
   @Override
-  public ElectricalMobility findUnique(String id) {
+  public Optional<ElectricalMobility> findUnique(String id) {
     ElectricalMobilityEntity entity = electricalMobilityEntityRepository
         .findById(id)
         .orElseThrow(() -> new RuntimeException(" electricalMobility not found"));
-    return INSTANCE.electricalMobilityEntityToElectricalMobility(entity);
+    return ofNullable(INSTANCE
+        .electricalMobilityEntityToElectricalMobility(entity));
   }
 
   @Override
-  public ElectricalMobility create(ElectricalMobility electricalMobility) {
+  public Optional<ElectricalMobility> create(ElectricalMobility electricalMobility) {
     ElectricalMobilityEntity entity = INSTANCE
         .electricalMobilityToElectricalMobilityEntity(electricalMobility);
-    return INSTANCE.
-        electricalMobilityEntityToElectricalMobility(electricalMobilityEntityRepository.save(entity));
+    return ofNullable(INSTANCE.
+        electricalMobilityEntityToElectricalMobility(electricalMobilityEntityRepository.save(entity)));
   }
 }

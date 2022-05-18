@@ -20,7 +20,8 @@ import net.devh.boot.grpc.server.service.GrpcService;
 @GrpcService
 @RequiredArgsConstructor
 public class ElectricalMobilityApiServer extends ElectricalMobilityApiServiceImplBase {
-private final ElectricalMobilityServicePort service;
+
+  private final ElectricalMobilityServicePort service;
 
   @Override
   public void findAll(ElectricalMobilityFindAllRequest request,
@@ -35,11 +36,11 @@ private final ElectricalMobilityServicePort service;
   @Override
   public void findUnique(ElectricalMobilityFindUniqueRequest request,
       StreamObserver<ElectricalMobilityFindUniqueResponse> responseObserver) {
-    ElectricalMobility electricalMobility = service.findUnique(request.getId());
-    responseObserver.onNext(ElectricalMobilityFindUniqueResponse
-        .newBuilder()
-        .setElectricalMobility(toProto(electricalMobility))
-        .build());
+    service.findUnique(request.getId()).ifPresent(electricalMobility -> responseObserver
+        .onNext(ElectricalMobilityFindUniqueResponse
+            .newBuilder()
+            .setElectricalMobility(toProto(electricalMobility))
+            .build()));
     responseObserver.onCompleted();
   }
 
@@ -47,10 +48,11 @@ private final ElectricalMobilityServicePort service;
   public void create(ElectricalMobilityCreationRequest request,
       StreamObserver<ElectricalMobilityCreationResponse> responseObserver) {
     ElectricalMobility electricalMobility = toBusiness(request.getElectricalMobility());
-    responseObserver.onNext(ElectricalMobilityCreationResponse
-        .newBuilder()
-        .setElectricalMobility(toProto(service.create(electricalMobility)))
-        .build());
+    service.create(electricalMobility).ifPresent(savedElectricalMobility -> responseObserver
+        .onNext(ElectricalMobilityCreationResponse
+            .newBuilder()
+            .setElectricalMobility(toProto(savedElectricalMobility))
+            .build()));
     responseObserver.onCompleted();
   }
 }

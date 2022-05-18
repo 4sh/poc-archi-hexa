@@ -4,6 +4,7 @@ import com.izivia.mobility.core.organizations.domain.data.ElectricalMobility;
 import com.izivia.mobility.core.organizations.domain.ports.api.ElectricalMobilityServicePort;
 import com.izivia.mobility.core.organizations.domain.ports.spi.ElectricalMobilityRepositoryPort;
 import java.util.List;
+import java.util.Optional;
 import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +23,12 @@ public class ElectricalMobilityServiceImpl implements ElectricalMobilityServiceP
   }
 
   @Override
-  public ElectricalMobility findUnique(@NonNull String id) {
+  public Optional<ElectricalMobility> findUnique(@NonNull String id) {
     return electricalMobilityRepositoryPort.findUnique(id);
   }
 
   @Override
-  public ElectricalMobility create(@NonNull ElectricalMobility electricalMobility) {
+  public Optional<ElectricalMobility> create(@NonNull ElectricalMobility electricalMobility) {
     return electricalMobilityRepositoryPort.create(electricalMobility);
   }
 }
