@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package com.izivia.mobility.core.organizations.api.proto;
+
+service ElectricalMobilityApiService {
+    rpc findAll(ElectricalMobilityFindAllRequest) returns (stream ElectricalMobilityDto) {}
+    rpc findUnique(ElectricalMobilityFindUniqueRequest) returns (ElectricalMobilityFindUniqueResponse) {}
+    rpc create(ElectricalMobilityCreationRequest) returns (ElectricalMobilityCreationResponse) {}
+}
+
+message ElectricalMobilityDto {
+    string id = 1;
+    string name = 3;
+    PostalAddressDto postalAddress = 4;
+    string tin = 5;
+}
+
+message ElectricalMobilityFindAllRequest {
+}
+
+message ElectricalMobilityFindUniqueRequest {
+    string id = 1;
+}
+message ElectricalMobilityFindUniqueResponse {
+    ElectricalMobilityDto electricalMobility = 1;
+}
+
+message ElectricalMobilityCreationRequest {
+    ElectricalMobilityDto electricalMobility = 1;
+}
+message ElectricalMobilityCreationResponse {
+    ElectricalMobilityDto electricalMobility = 1;
+}
+
+message PostalAddressDto {
+    string street = 1;
+    string city = 2;
+    string zipCode = 3;
+    string country = 4;
+}

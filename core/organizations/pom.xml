@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>core</artifactId>
+    <groupId>com.izivia</groupId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>organizations</artifactId>
+  <packaging>pom</packaging>
+  <modules>
+    <module>organizations-domain</module>
+    <module>organizations-app</module>
+    <module>organizations-infra-db-mongo</module>
+    <module>organizations-api</module>
+    <module>organizations-api-proto</module>
+    <module>organizations-infra-grpc</module>
+    <module>organizations-infra-grpc-server</module>
+    <module>organizations-infra-grpc-client</module>
+  </modules>
+
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+</project>
