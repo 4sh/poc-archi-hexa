@@ -30,9 +30,11 @@ public class ElectricalMobilityEntityMongoAdapter implements ElectricalMobilityR
 
   @Override
   public Optional<ElectricalMobility> findUnique(String id) {
-    return electricalMobilityEntityRepository
+    ElectricalMobilityEntity entity = electricalMobilityEntityRepository
         .findById(id)
-        .map(INSTANCE::electricalMobilityEntityToElectricalMobility);
+        .orElseThrow(() -> new RuntimeException(" electricalMobility not found : " + id));
+    return ofNullable(INSTANCE
+        .electricalMobilityEntityToElectricalMobility(entity));
   }
 
   @Override
