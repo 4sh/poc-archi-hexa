@@ -1,0 +1,15 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27019
+      database: izivia-tokens
+grpc:
+#  client:
+#    grpc-client-service:
+#      address: static://localhost:8090
+#      negotiationType: plaintext
+
+  server:
+    port: 8092    #default port 9090
+

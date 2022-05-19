@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package com.izivia.mobility.core.tokens.api.proto;
+service TokenApiService {
+
+  rpc findAll(TokenFindAllRequest) returns (stream TokenDto) {}
+  rpc findUnique(TokenFindUniqueRequest) returns (TokenFindUniqueResponse) {}
+  rpc create(TokenCreationRequest) returns (TokenCreationResponse) {}
+}
+
+message TokenFindAllRequest {
+
+}
+message TokenFindUniqueRequest {
+  string uuid = 1;
+}
+
+message TokenFindUniqueResponse {
+  TokenDto token = 1;
+}
+
+message TokenCreationRequest {
+  TokenDto token = 1;
+}
+
+message TokenCreationResponse {
+  TokenDto token = 1;
+}
+
+message TokenDto {
+  string id = 1;
+  string uuid = 2;
+  enum TokenKind {
+    RFID_BADGE = 0;
+  }
+  string providerRef = 3;
+  TokenKind kind = 4;
+}
