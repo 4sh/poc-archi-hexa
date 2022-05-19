@@ -9,9 +9,13 @@ import lombok.AccessLevel;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.context.annotation.Primary;
+import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@Service
+@Primary
 public class ElectricalMobilityServiceImpl implements ElectricalMobilityServicePort {
 
   ElectricalMobilityRepositoryPort electricalMobilityRepositoryPort;
