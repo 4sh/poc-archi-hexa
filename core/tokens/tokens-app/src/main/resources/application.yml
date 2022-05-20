@@ -5,11 +5,11 @@ spring:
       port: 27019
       database: izivia-tokens
 grpc:
-#  client:
-#    grpc-client-service:
-#      address: static://localhost:8090
-#      negotiationType: plaintext
-
   server:
-    port: 8092    #default port 9090
+    port: 8092
+  client:
+    grpc-client-electrical-service:
+      address: static://localhost:8090
+      negotiationType: plaintext
+
 

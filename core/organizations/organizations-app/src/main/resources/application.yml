@@ -5,10 +5,5 @@ spring:
       port: 27019
       database: izivia-organizations
 grpc:
-  client:
-    grpc-client-service:
-      address: static://localhost:8090
-      negotiationType: plaintext
-
   server:
-    port: 8090    #default port 9090
+    port: 8090

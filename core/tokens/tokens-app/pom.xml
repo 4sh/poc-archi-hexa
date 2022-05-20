@@ -8,9 +8,11 @@
     <version>2.6.8</version>
     <relativePath/> <!-- lookup parent from repository -->
   </parent>
+
   <groupId>com.izivia</groupId>
   <artifactId>tokens-app</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+
   <name>tokens-app</name>
   <description>tokens-app</description>
   <properties>
@@ -28,18 +30,17 @@
       <scope>test</scope>
     </dependency>
 
-
     <dependency>
       <groupId>com.izivia</groupId>
       <artifactId>tokens-infra-grpc-server</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>com.izivia</groupId>
       <artifactId>tokens-infra-db-mongo</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
-
   </dependencies>
 
   <build>

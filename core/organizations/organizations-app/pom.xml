@@ -44,17 +44,13 @@
       <artifactId>organizations-infra-grpc-server</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>com.izivia</groupId>
       <artifactId>organizations-infra-db-mongo</artifactId>
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
 
-    <dependency>
-      <groupId>com.izivia</groupId>
-      <artifactId>organizations-infra-grpc-client</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
-    </dependency>
   </dependencies>
 
   <build>

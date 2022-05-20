@@ -23,7 +23,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ElectricalMobilityApiClient implements ElectricalMobilityServiceApi {
 
-  @GrpcClient("grpc-client-service")
+  @GrpcClient("grpc-client-electrical-service")
   private ElectricalMobilityApiServiceBlockingStub synchronousService;
 
 
