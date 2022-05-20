@@ -6,6 +6,7 @@ import com.izivia.mobility.core.tokens.domain.data.Token;
 import com.izivia.mobility.core.tokens.domain.data.TokenKind;
 
 public class TokenGrpcServerMapper {
+  public static final String ELECTRICAL_MOBILITY_SERVICE_PROVIDER = "ElectricalMobilityServiceProvider";
 
   public static TokenDto toProto(Token token) {
     return TokenDto.newBuilder()
@@ -19,7 +20,7 @@ public class TokenGrpcServerMapper {
   public static Token toBusiness(TokenDto dto) {
     return new Token(dto.getId(),
         dto.getUuid(),
-        new ElectricalMobilityRef(dto.getProviderRef(), "ElectricalMobilityServiceProvider"),
+        new ElectricalMobilityRef(dto.getProviderRef(), ELECTRICAL_MOBILITY_SERVICE_PROVIDER),
         TokenKind.valueOf(dto.getKind().name()));
   }
 

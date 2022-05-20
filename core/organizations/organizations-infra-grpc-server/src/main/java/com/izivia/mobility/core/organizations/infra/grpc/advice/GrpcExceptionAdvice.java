@@ -12,5 +12,8 @@ public class GrpcExceptionAdvice {
   public Status handleDomainException(DomainException e) {
     return Status.NOT_FOUND.withDescription(e.getMessage()).withCause(e);
   }
-  // TODO : Tu as interet à gerer mieux les codes status
+  @GrpcExceptionHandler
+  public Status handleGlobalException(Exception e) {
+    return Status.INTERNAL.withDescription(e.getMessage()).withCause(e);
+  }
 }
