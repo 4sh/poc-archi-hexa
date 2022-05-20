@@ -1,10 +1,12 @@
 package com.izivia.mobility.core.tokens.infra.db.mongo.adapters;
 
+import static com.izivia.mobility.core.tokens.domain.error.ErrorType.NOT_FOUND;
 import static com.izivia.mobility.core.tokens.infra.db.mongo.mappers.TokenEntityMapper.INSTANCE;
 import static java.util.Optional.ofNullable;
 import static lombok.AccessLevel.PRIVATE;
 
 import com.izivia.mobility.core.tokens.domain.data.Token;
+import com.izivia.mobility.core.tokens.domain.error.DomainException;
 import com.izivia.mobility.core.tokens.domain.ports.spi.TokenRepositoryPort;
 import com.izivia.mobility.core.tokens.infra.db.mongo.entities.TokenEntity;
 import com.izivia.mobility.core.tokens.infra.db.mongo.repositories.TokenEntityRepository;
@@ -31,7 +33,7 @@ public class TokenEntityMongoAdapter implements TokenRepositoryPort {
   @Override
   public Optional<Token> findUnique(String id) {
     TokenEntity entity = tokenEntityRepository.findByUuid(id)
-        .orElseThrow(() -> new RuntimeException(" Token entity not found with uuid: " + id));
+        .orElseThrow(() -> new DomainException(NOT_FOUND, " Token not found : " + id));
     return ofNullable(INSTANCE
         .tokenEntityToToken(entity));
   }
