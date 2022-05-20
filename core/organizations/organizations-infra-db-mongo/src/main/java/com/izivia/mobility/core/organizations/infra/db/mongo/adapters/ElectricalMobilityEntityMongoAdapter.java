@@ -5,6 +5,8 @@ import static java.util.Optional.ofNullable;
 import static lombok.AccessLevel.PRIVATE;
 
 import com.izivia.mobility.core.organizations.domain.data.ElectricalMobility;
+import com.izivia.mobility.core.organizations.domain.error.DomainException;
+import com.izivia.mobility.core.organizations.domain.error.ErrorType;
 import com.izivia.mobility.core.organizations.domain.ports.spi.ElectricalMobilityRepositoryPort;
 import com.izivia.mobility.core.organizations.infra.db.mongo.entities.ElectricalMobilityEntity;
 import com.izivia.mobility.core.organizations.infra.db.mongo.repositories.ElectricalMobilityEntityRepository;
@@ -27,12 +29,11 @@ public class ElectricalMobilityEntityMongoAdapter implements ElectricalMobilityR
     return INSTANCE
         .electricalMobilityEntitiesToElectricalMobilities(entities);
   }
-
   @Override
   public Optional<ElectricalMobility> findUnique(String id) {
     ElectricalMobilityEntity entity = electricalMobilityEntityRepository
         .findById(id)
-        .orElseThrow(() -> new RuntimeException(" electricalMobility not found : " + id));
+        .orElseThrow(() -> new DomainException(ErrorType.NOT_FOUND, " electrical Mobility not found : " + id));
     return ofNullable(INSTANCE
         .electricalMobilityEntityToElectricalMobility(entity));
   }

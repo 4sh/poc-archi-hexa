@@ -1,6 +1,7 @@
 package com.izivia.mobility.core.organizations.domain.services;
 
 import com.izivia.mobility.core.organizations.domain.data.ElectricalMobility;
+import com.izivia.mobility.core.organizations.domain.error.DomainException;
 import com.izivia.mobility.core.organizations.domain.ports.api.ElectricalMobilityServicePort;
 import com.izivia.mobility.core.organizations.domain.ports.spi.ElectricalMobilityRepositoryPort;
 import java.util.List;
@@ -23,7 +24,7 @@ public class ElectricalMobilityServiceImpl implements ElectricalMobilityServiceP
   }
 
   @Override
-  public Optional<ElectricalMobility> findUnique(@NonNull String id) {
+  public Optional<ElectricalMobility> findUnique(@NonNull String id) throws DomainException {
     return electricalMobilityRepositoryPort.findUnique(id);
   }
 
