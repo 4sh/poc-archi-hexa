@@ -2,8 +2,6 @@ package com.izivia.mobility.core.tokens.domain.services;
 
 import com.izivia.mobility.core.organizations.api.service.ElectricalMobilityServiceApi;
 import com.izivia.mobility.core.tokens.domain.data.Token;
-import com.izivia.mobility.core.tokens.domain.error.DomainException;
-import com.izivia.mobility.core.tokens.domain.error.ErrorType;
 import com.izivia.mobility.core.tokens.domain.ports.api.TokenServicePort;
 import com.izivia.mobility.core.tokens.domain.ports.spi.TokenRepositoryPort;
 import java.util.List;
